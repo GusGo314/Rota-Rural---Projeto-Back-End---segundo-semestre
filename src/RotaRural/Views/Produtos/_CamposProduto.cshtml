@@ -1,0 +1,69 @@
+@model RotaRural.ViewModels.ProdutoFormViewModel
+
+<div asp-validation-summary="ModelOnly"></div>
+
+<div class="campo">
+    <label class="rotulo" asp-for="Nome"></label>
+    <input class="entrada" asp-for="Nome" placeholder="Digite o nome do produto" />
+    <span asp-validation-for="Nome"></span>
+</div>
+
+<div class="grade-2">
+    <div class="campo">
+        <label class="rotulo" asp-for="CategoriaId"></label>
+        <select class="entrada" asp-for="CategoriaId" asp-items="Model.Categorias">
+            <option value="">Informe a categoria</option>
+        </select>
+        <span asp-validation-for="CategoriaId"></span>
+    </div>
+
+    <div class="campo">
+        <label class="rotulo" asp-for="Unidade"></label>
+        <select class="entrada" asp-for="Unidade" asp-items="Html.GetEnumSelectList<UnidadeMedida>()">
+            <option value="">Escolha a unidade</option>
+        </select>
+        <span asp-validation-for="Unidade"></span>
+    </div>
+
+    <div class="campo">
+        <label class="rotulo" asp-for="Preco"></label>
+        <input class="entrada" asp-for="Preco" type="text" inputmode="decimal" placeholder="Ex.: 4,50" />
+        <span asp-validation-for="Preco"></span>
+    </div>
+
+    <div class="campo">
+        <label class="rotulo" asp-for="Quantidade"></label>
+        <input class="entrada" asp-for="Quantidade" placeholder="Quantidade disponível" />
+        <span asp-validation-for="Quantidade"></span>
+    </div>
+</div>
+
+<div class="campo">
+    <span class="rotulo">Disponibilidade de entrega</span>
+    <div class="chips">
+        <label class="chip">
+            <input asp-for="AceitaRetirada" />
+            <span>Retirada</span>
+        </label>
+        <label class="chip">
+            <input asp-for="AceitaEntregaAgendada" />
+            <span>Entrega agendada</span>
+        </label>
+    </div>
+    <span class="texto-hint">Considere sua capacidade de transporte e a infraestrutura disponível.</span>
+    <span asp-validation-for="AceitaRetirada"></span>
+</div>
+
+<div class="campo">
+    <label class="rotulo" asp-for="Foto"></label>
+
+    @if (Model.FotoAtualUrl is not null)
+    {
+        <img src="@Model.FotoAtualUrl" alt="Foto atual do produto" class="foto-atual" />
+        <span class="texto-hint">Envie outra imagem só se quiser substituir esta.</span>
+    }
+
+    <input class="entrada" asp-for="Foto" type="file" accept="image/jpeg,image/png,image/webp" />
+    <span class="texto-hint">Opcional. JPG, PNG ou WEBP, até 2 MB.</span>
+    <span asp-validation-for="Foto"></span>
+</div>

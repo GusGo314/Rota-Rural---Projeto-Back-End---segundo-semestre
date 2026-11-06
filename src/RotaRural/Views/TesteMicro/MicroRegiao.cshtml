@@ -1,0 +1,30 @@
+﻿@model IEnumerable<RotaRural.Helpers.SeedMunicipios.Municipio>
+
+@{
+    ViewData["Title"] = "Teste IBGE";
+}
+
+<div class="container mt-4">
+    <h2>Teste</h2>
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Municipio</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.NomeMunicipio</td>
+                       
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

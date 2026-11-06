@@ -1,0 +1,172 @@
+/* ================= Botões ================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 18px;
+    border: 1.5px solid transparent;
+    border-radius: var(--raio-botao);
+    font-family: var(--fonte-texto);
+    font-size: 14.5px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primario   { background: var(--tijolo); color: var(--branco); }
+.btn-primario:hover   { background: var(--tijolo-escuro); }
+
+.btn-secundario { background: var(--verde-mata); color: var(--branco); }
+.btn-secundario:hover { background: var(--verde-mata-clara); }
+
+.btn-ghost {
+    background: transparent;
+    border: var(--borda-destaque);
+    color: var(--verde-mata);
+}
+.btn-ghost:hover { background: var(--papel-alt); }
+
+.btn-pequeno {
+    padding: 5px 12px;
+    border-radius: var(--raio-botao-pequeno);
+    font-size: 13px;
+}
+
+/* ================= Pílulas ================= */
+.pilula {
+    display: inline-block;
+    padding: 2px 10px;
+    border: 1px solid;
+    border-radius: var(--raio-pilula);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.pilula-sucesso  { background: var(--sucesso-fundo);  border-color: var(--sucesso-borda);  color: var(--sucesso-texto); }
+.pilula-atencao  { background: var(--atencao-fundo);  border-color: var(--atencao-borda);  color: var(--atencao-texto); }
+.pilula-erro     { background: var(--erro-fundo);     border-color: var(--erro-borda);     color: var(--erro-texto); }
+.pilula-neutro   { background: var(--neutro-fundo);   border-color: var(--neutro-borda);   color: var(--neutro-texto); }
+.pilula-transito { background: var(--transito-fundo); border-color: var(--transito-borda); color: var(--transito-texto); }
+
+/* ================= Card ================= */
+.card {
+    padding: 18px 20px;
+    background: var(--branco);
+    border: var(--borda-padrao);
+    border-radius: var(--raio-card);
+    box-shadow: var(--sombra-padrao);
+}
+
+/* ================= Campos de formulário ================= */
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.rotulo {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--verde-mata);
+}
+
+.entrada {
+    width: 100%;
+    padding: 9px 12px;
+    background: var(--papel);
+    border: var(--borda-destaque);
+    border-radius: var(--raio-botao);
+}
+
+.entrada::placeholder { color: var(--neutro-texto); }
+
+.entrada:focus {
+    outline: 2px solid var(--verde-brotinho);
+    outline-offset: 0;
+}
+
+/* Classes que o próprio ASP.NET coloca quando a validação falha */
+.field-validation-error { font-size: 12px; color: var(--erro-texto); }
+.input-validation-error { border-color: var(--erro-borda); background: var(--erro-fundo); }
+.validation-summary-errors {
+    padding: 10px 14px;
+    background: var(--erro-fundo);
+    border: 1px solid var(--erro-borda);
+    border-radius: var(--raio-botao);
+    color: var(--erro-texto);
+    font-size: 13px;
+}
+.validation-summary-errors ul { margin: 0; padding-left: 18px; }
+
+/* ================= Chips de escolha (Retirada / Entrega agendada) ================= */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip { position: relative; }
+
+.chip input {             /* o checkbox real fica invisível por cima do chip */
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.chip span {
+    display: inline-block;
+    padding: 7px 18px;
+    border: var(--borda-destaque);
+    border-radius: var(--raio-pilula);
+    background: var(--branco);
+    color: var(--verde-mata);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.chip input:checked + span {
+    background: var(--verde-mata);
+    border-color: var(--verde-mata);
+    color: var(--branco);
+}
+
+.chip input:focus-visible + span {
+    outline: 2px solid var(--verde-brotinho);
+    outline-offset: 2px;
+}
+
+/* ================= Modal (usa a tag <dialog>) ================= */
+.modal {
+    width: min(480px, calc(100% - 32px));
+    padding: 0;
+    background: var(--branco);
+    border: var(--borda-padrao);
+    border-radius: var(--raio-card-produto);
+    box-shadow: var(--sombra-modal);
+    color: var(--grafite);
+}
+
+.modal::backdrop { background: rgba(31, 61, 43, .35); }
+
+.modal-cabecalho { padding: 18px 22px; border-bottom: 1.5px solid var(--terra); }
+.modal-cabecalho h3 { margin: 0; }
+.modal-corpo     { padding: 18px 22px; }
+.modal-rodape {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 16px 22px;
+    border-top: 1.5px solid var(--terra);
+}
+
+/* ================= Alertas (mensagens de sucesso após salvar) ================= */
+.alerta {
+    margin-bottom: 16px;
+    padding: 10px 14px;
+    border: 1px solid;
+    border-radius: var(--raio-botao);
+    font-size: 13.5px;
+}
+.alerta-sucesso { background: var(--sucesso-fundo); border-color: var(--sucesso-borda); color: var(--sucesso-texto); }
+.alerta-erro    { background: var(--erro-fundo);    border-color: var(--erro-borda);    color: var(--erro-texto); }

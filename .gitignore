@@ -1,0 +1,31 @@
+# ===== .NET / Visual Studio =====
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build / publish
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+publish/
+*.dll
+*.pdb
+*.exe
+
+# Logs / temporários
+*.log
+*.tmp
+*.cache
+
+# Ferramentas
+.idea/
+.vscode/
+
+
+**/wwwroot/uploads/
+appsettings.Development.json

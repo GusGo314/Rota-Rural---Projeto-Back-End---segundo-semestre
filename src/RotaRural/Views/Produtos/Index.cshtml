@@ -1,0 +1,108 @@
+@model IEnumerable<Produto>
+@using System.Globalization
+@using RotaRural.Extensions
+@{
+    ViewData["Title"] = "Meus produtos";
+    var ptBR = new CultureInfo("pt-BR");
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/paginas/produtos.css" asp-append-version="true" />
+}
+
+<div class="pagina-topo">
+    <div>
+        <h1 class="pagina-titulo">Meus produtos</h1>
+        <p class="pagina-subtitulo">
+            Cadastre, edite e mantenha o estoque em dia — só produtores aprovados
+            aparecem na vitrine dos compradores.
+        </p>
+    </div>
+    <button type="button" class="btn btn-primario" data-abrir-modal data-url="@Url.Action("Criar")">
+        + Novo produto
+    </button>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="card-vazio">
+        <p>Você ainda não cadastrou nenhum produto.</p>
+        <p>Clique em <strong>+ Novo produto</strong> para começar.</p>
+    </div>
+}
+else
+{
+    <ul class="lista-produtos">
+        @foreach (var produto in Model)
+        {
+            <li class="produto-card @(produto.Esgotado ? "produto-card-esgotado" : "")">
+                <div class="produto-foto">
+                    @if (produto.FotoUrl is not null)
+                    {
+                        <img src="@produto.FotoUrl" alt="@produto.Nome" />
+                    }
+                    else
+                    {
+                        <span aria-hidden="true">@(produto.Categoria.Icone ?? "🧺")</span>
+                    }
+                </div>
+
+                <div class="produto-info">
+                    <h2 class="produto-nome">@produto.Nome</h2>
+                    <p class="produto-meta">
+                        @produto.Categoria.Nome ·
+                        @produto.Preco.ToString("C", ptBR) / @produto.Unidade.NomeExibicao()
+                    </p>
+
+                    <div class="produto-tags">
+                        @if (produto.AceitaEntregaAgendada)
+                        {
+                            <span class="pilula pilula-sucesso">Entrega agendada</span>
+                        }
+                        @if (produto.AceitaRetirada)
+                        {
+                            <span class="pilula pilula-atencao">Retirada</span>
+                        }
+                    </div>
+
+                    <div class="produto-acoes">
+                        <button type="button" class="btn btn-ghost btn-pequeno" data-abrir-modal
+                                data-url="@Url.Action("Editar", new { id = produto.Id })">
+                            Editar
+                        </button>
+
+                        <button type="button" class="btn btn-ghost btn-pequeno" data-abrir-modal data-tamanho="pequeno"
+                                data-url="@Url.Action("AjustarEstoque", new { id = produto.Id })">
+                            Ajustar estoque
+                        </button>
+
+                        <button type="button" class="btn btn-ghost btn-pequeno" data-abrir-modal data-tamanho="pequeno"
+                                data-url="@Url.Action("Remover", new { id = produto.Id })">
+                            Remover
+                        </button>
+                    </div>
+                </div>
+
+                @if (produto.Esgotado)
+                {
+                    <span class="pilula pilula-erro">Esgotado</span>
+                }
+                else
+                {
+                    <span class="produto-estoque">
+                        @produto.Quantidade @produto.Unidade.NomeExibicao()
+                    </span>
+                }
+            </li>
+        }
+    </ul>
+}
+
+@* Um único modal: o conteúdo é a view da ação (Criar, Editar, AjustarEstoque ou Remover) *@
+<dialog id="modal" class="modal" aria-labelledby="modal-titulo"></dialog>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/validacao-ptbr.js" asp-append-version="true"></script>
+    <script src="~/js/produtos.js" asp-append-version="true"></script>
+}

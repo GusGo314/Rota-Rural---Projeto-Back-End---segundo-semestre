@@ -1,0 +1,65 @@
+@model RotaRural.ViewModels.Conta.LoginViewModel
+@{
+    Layout = "_LayoutAuth";
+    ViewData["Title"] = "Entrar";
+}
+
+<div class="form-wrap">
+    <h1>Rota Rural</h1>
+    <p class="sub">Entre para ligar produtores da sua microrregião a quem quer comprar direto do produtor.</p>
+
+    <nav class="auth-tabs" aria-label="Autenticação">
+        <a class="auth-tab ativo" asp-action="Login">Entrar</a>
+        <a class="auth-tab" asp-action="Cadastro">Criar conta</a>
+    </nav>
+
+    <fieldset class="perfis">
+        <legend>Tipo de conta</legend>
+        <label class="perfil">
+            <input type="radio" name="perfil" value="produtor" checked>
+            <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C8 8 6 11 6 14a6 6 0 0 0 12 0c0-3-2-6-6-11Z"/></svg>
+                Produtor
+            </span>
+        </label>
+        <label class="perfil">
+            <input type="radio" name="perfil" value="comprador">
+            <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><path d="M9 12a3 3 0 0 0 6 0"/></svg>
+                Comprador
+            </span>
+        </label>
+        <label class="perfil">
+            <input type="radio" name="perfil" value="administrador">
+            <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z"/></svg>
+                Administrador
+            </span>
+        </label>
+    </fieldset>
+
+    @if (TempData["Sucesso"] is string sucesso)
+    {
+        <p class="nota ok">@sucesso</p>
+    }
+
+    <form asp-action="Login" method="post" novalidate>
+        <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+
+        <div asp-validation-summary="ModelOnly" class="nota erro"></div>
+
+        <div class="campo">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="txt" placeholder="joao@rotarural.com.br" autocomplete="email" />
+            <span asp-validation-for="Email" class="ajuda erro"></span>
+        </div>
+
+        <div class="campo">
+            <label asp-for="Senha"></label>
+            <input asp-for="Senha" class="txt" placeholder="Mínimo 8 caracteres" autocomplete="current-password" />
+            <span asp-validation-for="Senha" class="ajuda erro"></span>
+        </div>
+
+        <button type="submit" class="btn primeiro">Entrar</button>
+    </form>
+</div>

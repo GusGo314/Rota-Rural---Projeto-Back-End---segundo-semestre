@@ -1,0 +1,16 @@
+@model RotaRural.ViewModels.ProdutoFormViewModel
+
+<div class="modal-cabecalho">
+    <h3 id="modal-titulo">Editar produto</h3>
+</div>
+
+<form asp-action="Editar" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+    <div class="modal-corpo">
+        <partial name="_CamposProduto" />
+    </div>
+
+    <div class="modal-rodape">
+        <button type="button" class="btn btn-ghost" data-fechar-modal>Cancelar</button>
+        <button type="submit" class="btn btn-primario">Salvar produto</button>
+    </div>
+</form>

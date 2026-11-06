@@ -1,0 +1,108 @@
+/* ============================================================
+   Layout genérico de página em duas colunas (hero + painel).
+   Reutilizável por login, cadastro e outras telas.
+   Depende dos tokens e componentes de rota-rural.css.
+   ============================================================ */
+
+body {
+    display: grid;
+    grid-template-columns: 60.5fr 39.5fr;
+    min-height: 100vh;
+}
+
+.hero {
+    position: relative;
+    background: var(--verde-escuro);
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.hero svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero blockquote {
+    position: absolute;
+    left: 5%;
+    bottom: 8%;
+    max-width: min(36ch, 80%);
+    color: var(--creme-claro);
+}
+
+.hero blockquote p {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(1.6rem, 2.4vw, 2.3rem);
+    line-height: 1.15;
+    letter-spacing: -.01em;
+}
+
+.hero cite {
+    display: block;
+    margin-top: .9rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: .95rem;
+    color: var(--ouro);
+}
+
+.trilha {
+    stroke-dasharray: 14 14;
+    animation: andar 40s linear infinite;
+}
+
+@keyframes andar {
+    to { stroke-dashoffset: -280; }
+}
+
+.painel {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1.5rem 3rem;
+}
+
+.form-wrap {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 2rem;
+}
+
+.auth-tabs {
+    display: flex;
+    gap: .5rem;
+    margin-top: 1.5rem;
+    border-bottom: 1px solid var(--borda);
+}
+
+.auth-tab {
+    padding: .6rem 1rem;
+    font-weight: 600;
+    font-size: .9rem;
+    color: var(--texto-suave);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+
+.auth-tab.ativo {
+    color: var(--verde-escuro);
+    border-bottom-color: var(--terra);
+}
+
+.auth-tab:hover {
+    color: var(--verde-escuro);
+}
+
+@media (max-width: 900px) {
+    body { grid-template-columns: 1fr; }
+    .hero { min-height: 0; height: 180px; }
+    .hero blockquote { display: none; }
+    .form-wrap { margin-top: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .trilha { animation: none; }
+}

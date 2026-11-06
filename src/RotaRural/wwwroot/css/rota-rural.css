@@ -1,0 +1,251 @@
+/* ============================================================
+   Rota Rural — Design System
+   Tokens, tipografia e componentes reutilizáveis entre as views.
+   O layout específico da tela de login fica em login.css.
+   ============================================================ */
+
+:root {
+    --verde-escuro: #213d2e;
+    --verde-medio: #2f5543;
+    --verde-trilha: #3f7a5d;
+    --creme: #f2ebdd;
+    --creme-claro: #fffdf8;
+    --areia: #e9dfc6;
+    --terra: #b44a33;
+    --terra-escura: #9a3d29;
+    --ouro: #e3b04b;
+    --texto: #2a2a24;
+    --texto-suave: #6f6b5d;
+    --borda: #d8cfba;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Figtree', system-ui, sans-serif;
+}
+
+body {
+    font-family: var(--sans);
+    background: var(--creme);
+    color: var(--texto);
+}
+
+h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 2.1rem;
+    color: var(--verde-escuro);
+    letter-spacing: -.01em;
+    line-height: 1.1;
+}
+
+.sub {
+    margin-top: .5rem;
+    font-size: .9rem;
+    line-height: 1.35;
+    font-weight: 500;
+    color: var(--texto-suave);
+}
+
+/* ---------- Seletor de perfil ---------- */
+.perfis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.6rem;
+    border: 0;
+}
+
+.perfis legend {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.perfil { position: relative; }
+
+.perfil input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    cursor: pointer;
+}
+
+.perfil span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .35rem;
+    height: 70px;
+    background: var(--creme-claro);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--texto);
+    transition: background .15s, border-color .15s;
+}
+
+.perfil svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.perfil input:checked + span {
+    background: #dcdccb;
+    border-color: var(--verde-escuro);
+}
+
+.perfil input:focus-visible + span {
+    outline: 2px solid var(--verde-escuro);
+    outline-offset: 2px;
+}
+
+.perfil input:not(:checked):hover + span {
+    border-color: var(--verde-medio);
+}
+
+/* ---------- Formulários ---------- */
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.campo {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+}
+
+.campo.meio { grid-column: auto; }
+
+form[data-perfil="comprador"] .campo.cpf { grid-column: 1 / -1; }
+
+.campo[hidden] { display: none; }
+
+label {
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--texto);
+}
+
+label small {
+    font-weight: 500;
+    font-size: .7rem;
+    color: var(--texto-suave);
+}
+
+input.txt {
+    width: 100%;
+    height: 32px;
+    padding: 0 .75rem;
+    font: 500 .85rem var(--sans);
+    color: var(--texto);
+    background: var(--creme-claro);
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    transition: border-color .15s, box-shadow .15s;
+}
+
+input.txt::placeholder { color: #8a8576; }
+
+input.txt:focus {
+    outline: none;
+    border-color: var(--verde-escuro);
+    box-shadow: 0 0 0 3px rgba(33, 61, 46, .15);
+}
+
+input.txt[aria-invalid="true"] { border-color: var(--terra); }
+
+.ajuda {
+    font-size: .65rem;
+    color: var(--texto-suave);
+    margin-top: -.1rem;
+}
+
+/* ---------- Validação ---------- */
+.nota:empty { display: none; }
+
+.nota ul {
+    margin: 0;
+    padding-left: 1.1rem;
+}
+
+.ajuda.erro,
+.field-validation-error {
+    color: var(--terra-escura);
+}
+
+input.txt.input-validation-error {
+    border-color: var(--terra);
+}
+
+button.link-button {
+    background: none;
+    border: 0;
+    padding: .5rem 1rem;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* ---------- Mensagens ---------- */
+.nota {
+    grid-column: 1 / -1;
+    margin-top: .6rem;
+    padding: 1.1rem 1.7rem;
+    background: var(--areia);
+    border: 1px dashed #a98d5a;
+    border-radius: 6px;
+    font-size: .85rem;
+    line-height: 1.4;
+    color: var(--texto-suave);
+}
+
+.nota.erro {
+    border-color: var(--terra);
+    color: var(--terra-escura);
+}
+
+.nota.ok {
+    border-color: var(--verde-medio);
+    color: var(--verde-escuro);
+}
+
+/* ---------- Botões ---------- */
+.btn {
+    grid-column: 1 / -1;
+    height: 38px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--terra);
+    color: #fff;
+    font: 700 .85rem var(--sans);
+    letter-spacing: .02em;
+    cursor: pointer;
+    transition: background .15s;
+}
+
+.btn:hover { background: var(--terra-escura); }
+
+.btn:focus-visible {
+    outline: 2px solid var(--verde-escuro);
+    outline-offset: 2px;
+}
+
+.btn.primeiro { margin-top: .6rem; }
+
+/* ---------- Responsivo dos componentes ---------- */
+@media (max-width: 420px) {
+    .perfis { gap: .5rem; }
+    form { grid-template-columns: 1fr; }
+    .campo.meio { grid-column: 1 / -1; }
+}

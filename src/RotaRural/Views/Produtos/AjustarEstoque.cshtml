@@ -1,0 +1,24 @@
+@model RotaRural.ViewModels.AjustarEstoqueViewModel
+
+<div class="modal-cabecalho">
+    <h3 id="modal-titulo">Ajustar estoque</h3>
+</div>
+
+<form asp-action="AjustarEstoque" asp-route-id="@Model.Id" method="post">
+    <div class="modal-corpo">
+        <p class="texto-meta">
+            @Model.Nome — estoque atual: @Model.QuantidadeAtual @Model.Unidade
+        </p>
+
+        <div class="campo">
+            <label class="rotulo" asp-for="NovaQuantidade"></label>
+            <input class="entrada" asp-for="NovaQuantidade" min="0" step="1" />
+            <span asp-validation-for="NovaQuantidade"></span>
+        </div>
+    </div>
+
+    <div class="modal-rodape">
+        <button type="button" class="btn btn-ghost" data-fechar-modal>Cancelar</button>
+        <button type="submit" class="btn btn-primario">Salvar estoque</button>
+    </div>
+</form>

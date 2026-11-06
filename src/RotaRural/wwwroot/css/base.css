@@ -1,0 +1,44 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--fonte-texto);
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--grafite);
+    background: var(--papel);
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
+    color: var(--verde-mata);
+    line-height: 1.2;
+    margin: 0 0 .5em;
+}
+
+h1 { font-size: 34px; }   /* título de página (hero) */
+h2 { font-size: 26px; }   /* título de tela */
+h3 { font-size: 19px; }   /* título de card / modal */
+
+a { color: var(--verde-mata); }
+
+img { max-width: 100%; display: block; }
+
+/* Inputs e botões herdam a fonte do site (o navegador não faz isso sozinho) */
+button, input, select, textarea {
+    font: inherit;
+    color: inherit;
+}
+
+/* Foco visível para quem navega pelo teclado */
+:focus-visible {
+    outline: 2px solid var(--verde-brotinho);
+    outline-offset: 2px;
+}
+
+/* Utilitários de texto da escala tipográfica */
+.texto-meta { font-size: 13px; color: var(--neutro-texto); }
+.texto-hint { font-size: 11.5px; color: var(--neutro-texto); }

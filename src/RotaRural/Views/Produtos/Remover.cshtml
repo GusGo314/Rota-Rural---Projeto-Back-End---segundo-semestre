@@ -1,0 +1,19 @@
+@model Produto
+
+<div class="modal-cabecalho">
+    <h3 id="modal-titulo">Remover produto</h3>
+</div>
+
+<form asp-action="Remover" asp-route-id="@Model.Id" method="post">
+    <div class="modal-corpo">
+        <p>
+            Tem certeza que deseja remover <strong>@Model.Nome</strong>?
+            Ele deixa de aparecer na vitrine. Pedidos já feitos não são afetados.
+        </p>
+    </div>
+
+    <div class="modal-rodape">
+        <button type="button" class="btn btn-ghost" data-fechar-modal>Cancelar</button>
+        <button type="submit" class="btn btn-primario">Remover</button>
+    </div>
+</form>

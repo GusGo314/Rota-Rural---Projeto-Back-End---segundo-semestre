@@ -1,0 +1,42 @@
+:root {
+    /* ---- Cores primárias ---- */
+    --verde-mata: #1F3D2B;
+    --verde-mata-clara: #2F5641;
+    --verde-brotinho: #7BA05B;
+    --tijolo: #B5462F;
+    --tijolo-escuro: #8F3722;
+    --milho: #E4B24C;
+    --terra: #8C5A34;
+
+    /* ---- Superfícies e texto ---- */
+    --papel: #F3ECDD;
+    --papel-alt: #EAE0C6;
+    --branco: #FFFDF8;
+    --linha: #D8CBA9;
+    --grafite: #2B2620;
+
+    /* ---- Estados (pílulas e status) ---- */
+    --sucesso-fundo: #E9F0E2;   --sucesso-borda: #C7DAB8;   --sucesso-texto: #1F3D2B;
+    --atencao-fundo: #FBF0D6;   --atencao-borda: #EAD79C;   --atencao-texto: #7A5A16;
+    --erro-fundo: #F7E2DC;      --erro-borda: #E7B7A9;      --erro-texto: #8F3722;
+    --neutro-fundo: #EFEAE0;    --neutro-borda: #D8CBA9;    --neutro-texto: #6B6357;
+    --transito-fundo: #DCE7F2;  --transito-borda: #B7CCE7;  --transito-texto: #245080;
+
+    /* ---- Forma ---- */
+    --raio-botao-pequeno: 7px;
+    --raio-botao: 8px;
+    --raio-chip: 9px;
+    --raio-card: 10px;
+    --raio-card-produto: 12px;
+    --raio-pilula: 100px;
+
+    --borda-padrao: 1px solid var(--linha);
+    --borda-destaque: 1.5px solid var(--linha);
+
+    --sombra-padrao: 3px 3px 0 rgba(43, 38, 32, .08);
+    --sombra-modal: 6px 6px 0 rgba(31, 61, 43, .15);
+
+    /* ---- Tipografia ---- */
+    --fonte-titulo: 'Fraunces', serif;
+    --fonte-texto: 'Karla', sans-serif;
+}

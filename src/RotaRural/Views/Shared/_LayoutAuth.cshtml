@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Rota Rural</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/rota-rural.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <aside class="hero" aria-hidden="false">
+        <svg viewBox="0 0 1162 1080" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustração de uma rota ligando propriedades rurais">
+            <!-- Faixa de terra -->
+            <path d="M948 468 L1092 494 C1070 620 1040 700 960 745 C880 790 800 795 735 788 C680 780 640 740 610 685 C580 640 540 645 500 650 C470 655 450 660 438 668 C500 690 560 720 575 770 C580 830 560 880 530 940 C500 990 440 1012 380 1012 C300 1010 240 1000 180 1020 C130 1040 90 1065 56 1080 L0 1080 L0 975 C60 910 120 855 180 845 C230 835 270 850 288 880 C310 905 340 885 390 870 C440 850 450 800 420 750 C390 700 340 725 310 690 C290 650 296 600 305 560 C330 510 400 490 470 484 C540 480 600 490 625 520 C660 570 700 610 745 635 C800 665 860 650 900 610 C935 570 940 520 948 468 Z" fill="#2f5543"/>
+            <!-- Rota tracejada -->
+            <path class="trilha" d="M790 12 C740 40 715 60 705 85 C690 125 700 150 715 175 C740 220 770 240 785 280 C800 320 780 360 760 405 C740 450 700 490 650 520 C600 555 550 600 500 630 C460 650 420 645 380 640 C340 635 300 620 280 600 C240 570 200 555 170 557 C130 565 108 590 108 620 C108 650 128 665 140 685 C160 720 155 760 135 790 C110 830 60 870 12 888" fill="none" stroke="#3f7a5d" stroke-width="10" stroke-linecap="round" opacity=".85"/>
+            <!-- Paradas -->
+            <g fill="#e3b04b">
+                <circle cx="722" cy="76" r="12"/>
+                <circle cx="748" cy="419" r="12"/>
+                <circle cx="425" cy="641" r="12"/>
+                <circle cx="117" cy="655" r="12"/>
+            </g>
+        </svg>
+        <blockquote>
+            <p>“Quem planta sabe esperar. Quem vende de perto, colhe confiança”</p>
+            <cite>ROTA RURAL · Agricultura familiar</cite>
+        </blockquote>
+    </aside>
+
+    <main class="painel">
+        @RenderBody()
+    </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/auth.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
