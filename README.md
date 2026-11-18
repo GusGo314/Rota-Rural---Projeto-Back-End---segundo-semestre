@@ -81,100 +81,10 @@ Atualmente, a aplicação é executada localmente. Uma versão hospedada publica
     ├── Program.cs
     └── appsettings.json
 
-## Requisitos para executar
+## Link para acesso
+https://rotarural-pucminas-hgg8d6d4fhcfg9ca.brazilsouth-01.azurewebsites.net/
 
-Instale previamente:
 
-- Git;
-- .NET 10 SDK;
-- SQL Server LocalDB;
-- Visual Studio 2026 com a carga de trabalho **ASP.NET e desenvolvimento Web**.
-
-O SQL Server LocalDB normalmente é instalado junto com o Visual Studio.
-
-## Clonar o projeto
-
-No terminal, execute:
-
-    git clone --branch Feature-Atribuicao-Microrregiao https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2026-2-e2-proj-int-t2-rota-rural.git
-    cd pmv-ads-2026-2-e2-proj-int-t2-rota-rural
-
-## Restaurar as dependências
-
-    dotnet restore
-
-## Configurar o banco de dados
-
-O projeto utiliza inicialmente o SQL Server LocalDB:
-
-    (localdb)\MSSQLLocalDB
-
-A connection string está localizada em:
-
-    src/RotaRural/appsettings.json
-
-Para criar ou atualizar o banco de dados usando as migrations, execute:
-
-    dotnet ef database update --project src/RotaRural/RotaRural.csproj
-
-Caso o comando `dotnet ef` não esteja disponível, instale a ferramenta:
-
-    dotnet tool install --global dotnet-ef
-
-Também é possível atualizar o banco pelo Visual Studio:
-
-1. Abra a solução `RotaRural.slnx`;
-2. Acesse **Ferramentas > Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**;
-3. Execute:
-
-    Update-Database
-
-A aplicação pode consultar dados externos para carregar os municípios. Portanto, é recomendável ter conexão com a internet na primeira execução.
-
-## Executar pelo terminal
-
-Na raiz do repositório, execute:
-
-    dotnet run --project src/RotaRural/RotaRural.csproj
-
-A aplicação normalmente ficará disponível em:
-
-    https://localhost:7223
-
-ou:
-
-    http://localhost:5146
-
-Como esses endereços utilizam `localhost`, a aplicação estará acessível somente no computador que estiver executando o projeto.
-
-## Executar pelo Visual Studio
-
-1. Abra o arquivo `RotaRural.slnx`;
-2. Defina `RotaRural` como projeto de inicialização;
-3. Escolha o perfil `https` ou `http`;
-4. Pressione `F5` ou selecione **Depurar > Iniciar sem Depuração**;
-5. O navegador será aberto automaticamente.
-
-## Fluxo principal da aplicação
-
-1. O usuário cria uma conta como produtor ou comprador;
-2. Seleciona seu município;
-3. O produtor cadastra produtos e controla seu estoque;
-4. O comprador acessa a vitrine;
-5. A vitrine apresenta produtos disponíveis de produtores da mesma região;
-6. O comprador adiciona os produtos ao carrinho;
-7. O carrinho permite ajustar quantidades, remover itens e visualizar o total.
-
-## Observações importantes
-
-- O banco de dados é local e não é compartilhado pelo GitHub;
-- Cada pessoa que executar o projeto terá seu próprio banco LocalDB;
-- O carrinho é armazenado na sessão do navegador;
-- O carrinho pode ser perdido quando a sessão expirar ou quando o usuário trocar de navegador;
-- A finalização de pedido, pagamento e baixa definitiva do estoque ainda não fazem parte do escopo atual;
-- A aplicação ainda não possui hospedagem pública;
-- Não é possível acessar o endereço `localhost` de outro computador;
-- Não inclua senhas, tokens, chaves de API ou outros dados sensíveis no repositório.
 
 ## Projeto como portfólio
 
@@ -191,7 +101,6 @@ O repositório demonstra conhecimentos em:
 - Utilização de sessões;
 - Criação de interfaces com Razor, HTML e CSS.
 
-Uma futura versão hospedada poderá ser adicionada para permitir o acesso direto pelo navegador sem a necessidade de clonar e executar o projeto localmente.
 
 ## Integrantes
 
@@ -205,12 +114,6 @@ Uma futura versão hospedada poderá ser adicionada para permitir o acesso diret
 ## Orientador
 
 - José Wilson da Costa.
-
-## Status da aplicação
-
-A aplicação ainda não está hospedada publicamente.
-
-Enquanto não houver uma versão online, é necessário clonar o repositório e executar o projeto localmente seguindo as instruções deste documento.
 
 # Documentação
 
